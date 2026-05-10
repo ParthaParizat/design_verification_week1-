@@ -1,0 +1,70 @@
+========================================
+ISSUE LOG — Week 1 | Group B (PS/2)
+Asmicore Semiconductor — DV Team
+========================================
+
+[Day 1] ISSUE-001
+  Problem   : SSH push to GitHub failed on first attempt.
+  Error     : "Permission denied (publickey)"
+  Root Cause: SSH key was not added to GitHub account settings.
+  Fix       : Generated key with ssh-keygen -t ed25519
+              Copied public key to GitHub → Settings → SSH Keys.
+              Push worked immediately after.
+  Status    : RESOLVED
+
+------------------------------------------------------------
+
+[Day 3] ISSUE-002
+  Problem   : overflow_flag signal is not implemented correctly.
+  What I know: Overflow occurs when two 8-bit values add up to a
+               value greater than 255 (unsigned), or when signed
+               arithmetic produces a wrong-sign result.
+  What I did : Set overflow_flag = 1'b0 as a placeholder so the
+               module compiles and the rest of the design works.
+  What I don't understand: How to detect signed vs unsigned overflow
+               separately in SystemVerilog using only the MSB and carry.
+  Plan      : Research carry-out and sign-bit based overflow detection.
+  Status    : OPEN
+
+------------------------------------------------------------
+
+[Day 5] ISSUE-003
+  Problem   : PS/2 parity checking not implemented in ps2_rx.sv.
+  What I know: PS/2 uses odd parity — the number of 1s in the 8
+               data bits plus the parity bit must be odd.
+  What I did : The PARITY state in the FSM is a pass-through.
+               The parity bit is received and ignored.
+  Assumption : Input data is always correctly formed (no errors).
+  Plan      : Use $countones() or XOR reduction to compute parity
+               and compare with received parity bit in Week 2.
+  Status    : OPEN
+
+------------------------------------------------------------
+
+[Day 5] ISSUE-004
+  Problem   : No debounce logic for ps2_clk glitches.
+  What I know: Real PS/2 keyboards can produce short spurious pulses
+               on the clock line due to mechanical or electrical noise.
+  What I did : Assumed a clean clock for this week.
+  Plan      : Add a debounce filter (e.g., 2-cycle stable check) later.
+  Status    : OPEN
+
+------------------------------------------------------------
+
+[Day 6] ISSUE-005
+  Problem   : ps2_rx_tb.sv is incomplete.
+  What works : Reset generation, clock generation, and the
+               send_ps2_byte task are implemented. TC001 runs.
+  What is missing:
+    - TC002: reset mid-transfer test
+    - TC003: no-start-bit test (need to hold data high and verify
+             the FSM stays in IDLE)
+    - Proper checking of rx_valid de-assertion after the pulse
+  Reason    : Generating a serial PS/2 bitstream in a testbench
+              was harder than the ALU case. Ran out of time.
+  Plan      : Complete ps2_rx_tb in Week 2.
+  Status    : OPEN
+
+========================================
+END OF ISSUE LOG
+========================================

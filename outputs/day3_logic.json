@@ -1,0 +1,30 @@
+{
+  "day": 3,
+  "title": "Complete ALU and Signal Understanding",
+  "module": "alu",
+  "bit_width": 8,
+  "opcode_width": 3,
+  "operations": [
+    { "opcode": "3'b000", "name": "ADD", "expression": "a + b"                        },
+    { "opcode": "3'b001", "name": "SUB", "expression": "a - b"                        },
+    { "opcode": "3'b010", "name": "AND", "expression": "a & b"                        },
+    { "opcode": "3'b011", "name": "OR",  "expression": "a | b"                        },
+    { "opcode": "3'b100", "name": "XOR", "expression": "a ^ b"                        },
+    { "opcode": "3'b101", "name": "NOT", "expression": "~a  (b not used)"             },
+    { "opcode": "3'b110", "name": "DIV", "expression": "(b==0) ? 8'hFF : a/b"        }
+  ],
+  "signals": [
+    { "name": "a",            "type": "data",    "width": 8, "direction": "input",  "description": "Operand A"                              },
+    { "name": "b",            "type": "data",    "width": 8, "direction": "input",  "description": "Operand B"                              },
+    { "name": "opcode",       "type": "control", "width": 3, "direction": "input",  "description": "Selects ALU operation"                  },
+    { "name": "result",       "type": "data",    "width": 8, "direction": "output", "description": "Computed result"                        },
+    { "name": "zero_flag",    "type": "status",  "width": 1, "direction": "output", "description": "High when result == 0"                  },
+    { "name": "overflow_flag","type": "status",  "width": 1, "direction": "output", "description": "Overflow indicator — TODO (ISSUE-002)" }
+  ],
+  "known_edge_cases": [
+    "ADD: 200 + 100 = 300 → wraps to 44 in 8-bit unsigned",
+    "SUB: 0 - 5 = -5 → wraps to 251 in 8-bit unsigned",
+    "DIV: b == 0 returns 0xFF as error code"
+  ],
+  "open_issues": ["ISSUE-002: overflow_flag not implemented"]
+}

@@ -1,0 +1,27 @@
+{
+  "day": 5,
+  "title": "Test Plan — ALU and PS/2 RX",
+  "alu_testplan": {
+    "design": "ALU",
+    "total_testcases": 8,
+    "testcases": [
+      { "id": "TC001", "op": "ADD", "a": 10,  "b": 5,   "expected": 15,  "type": "normal",   "zero_flag": false },
+      { "id": "TC002", "op": "ADD", "a": 200, "b": 100, "expected": 44,  "type": "boundary", "zero_flag": false },
+      { "id": "TC003", "op": "SUB", "a": 10,  "b": 10,  "expected": 0,   "type": "normal",   "zero_flag": true  },
+      { "id": "TC004", "op": "SUB", "a": 0,   "b": 5,   "expected": 251, "type": "boundary", "zero_flag": false },
+      { "id": "TC005", "op": "AND", "a": 170, "b": 85,  "expected": 0,   "type": "normal",   "zero_flag": true  },
+      { "id": "TC006", "op": "DIV", "a": 10,  "b": 0,   "expected": 255, "type": "invalid",  "zero_flag": false },
+      { "id": "TC007", "op": "DIV", "a": 10,  "b": 2,   "expected": 5,   "type": "normal",   "zero_flag": false },
+      { "id": "TC008", "op": "XOR", "a": 255, "b": 255, "expected": 0,   "type": "normal",   "zero_flag": true  }
+    ]
+  },
+  "ps2_testplan": {
+    "design": "PS2_RX",
+    "total_testcases": 3,
+    "testcases": [
+      { "id": "PS2_TC001", "description": "Normal byte 0x1C",          "type": "normal",   "status": "IMPLEMENTED"     },
+      { "id": "PS2_TC002", "description": "Reset mid-transfer",        "type": "boundary", "status": "NOT_IMPLEMENTED" },
+      { "id": "PS2_TC003", "description": "No start bit — stays IDLE", "type": "invalid",  "status": "NOT_IMPLEMENTED" }
+    ]
+  }
+}

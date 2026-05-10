@@ -1,0 +1,28 @@
+{
+  "day": 6,
+  "title": "Simulation Results — ALU Testbench",
+  "design": "ALU",
+  "simulator": "EDAPlayground (Icarus Verilog / ModelSim)",
+  "results": [
+    { "id": "TC001", "op": "ADD", "a": 10,  "b": 5,   "expected": 15,  "actual": 15,  "zero_flag": false, "status": "PASS" },
+    { "id": "TC002", "op": "ADD", "a": 200, "b": 100, "expected": 44,  "actual": 44,  "zero_flag": false, "status": "PASS" },
+    { "id": "TC003", "op": "SUB", "a": 10,  "b": 10,  "expected": 0,   "actual": 0,   "zero_flag": true,  "status": "PASS" },
+    { "id": "TC004", "op": "SUB", "a": 0,   "b": 5,   "expected": 251, "actual": 251, "zero_flag": false, "status": "PASS" },
+    { "id": "TC005", "op": "AND", "a": 170, "b": 85,  "expected": 0,   "actual": 0,   "zero_flag": true,  "status": "PASS" },
+    { "id": "TC006", "op": "DIV", "a": 10,  "b": 0,   "expected": 255, "actual": 255, "zero_flag": false, "status": "PASS" },
+    { "id": "TC007", "op": "DIV", "a": 10,  "b": 2,   "expected": 5,   "actual": 5,   "zero_flag": false, "status": "PASS" },
+    { "id": "TC008", "op": "XOR", "a": 255, "b": 255, "expected": 0,   "actual": 0,   "zero_flag": true,  "status": "PASS" }
+  ],
+  "summary": {
+    "total":  8,
+    "passed": 8,
+    "failed": 0,
+    "pass_rate": "100%"
+  },
+  "ps2_results": {
+    "note": "PS/2 testbench incomplete — see ISSUE-005",
+    "TC001_status": "PASS",
+    "TC002_status": "NOT_RUN",
+    "TC003_status": "NOT_RUN"
+  }
+}

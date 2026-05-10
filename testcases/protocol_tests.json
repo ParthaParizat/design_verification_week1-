@@ -1,0 +1,38 @@
+{
+  "design": "PS2_RX",
+  "version": "1.0",
+  "total_testcases": 3,
+  "testcases": [
+    {
+      "id": "PS2_TC001",
+      "description": "Normal keyboard byte — letter A scan code (0x1C)",
+      "input_byte_hex": "0x1C",
+      "input_byte_binary": "00011100",
+      "frame_bits": "0 00111000 1 1",
+      "frame_note": "[START] [D0..D7 LSB first] [PARITY] [STOP]",
+      "expected_rx_data": "0x1C",
+      "expected_rx_valid": 1,
+      "type": "normal",
+      "status": "IMPLEMENTED"
+    },
+    {
+      "id": "PS2_TC002",
+      "description": "Reset condition — system reset applied mid-transfer",
+      "expected_state_after_reset": "IDLE",
+      "expected_rx_valid": 0,
+      "type": "boundary",
+      "status": "NOT_IMPLEMENTED",
+      "note": "Skipped in Week 1 — see ISSUE-005"
+    },
+    {
+      "id": "PS2_TC003",
+      "description": "No start bit — data line stays high, receiver must stay in IDLE",
+      "input_byte_hex": "N/A",
+      "expected_rx_valid": 0,
+      "expected_state": "IDLE",
+      "type": "invalid",
+      "status": "NOT_IMPLEMENTED",
+      "note": "Skipped in Week 1 — see ISSUE-005"
+    }
+  ]
+}

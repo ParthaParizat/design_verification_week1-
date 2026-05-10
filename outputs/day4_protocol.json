@@ -1,0 +1,27 @@
+{
+  "day": 4,
+  "title": "Verification Thinking and Test Planning",
+  "design": "ALU",
+  "verification_concepts_learned": [
+    "Test case: specific input with known expected output",
+    "Expected output: determined from spec before simulation",
+    "Normal test: typical valid inputs",
+    "Boundary test: extreme input values (0, max)",
+    "Invalid test: inputs the design must handle gracefully"
+  ],
+  "opcode_to_behavior_map": [
+    { "opcode": "000", "operation": "ADD", "edge_case": "Overflow wraps in unsigned 8-bit"         },
+    { "opcode": "001", "operation": "SUB", "edge_case": "Underflow wraps in unsigned 8-bit"        },
+    { "opcode": "010", "operation": "AND", "edge_case": "All-zero inputs give all-zero output"     },
+    { "opcode": "011", "operation": "OR",  "edge_case": "All-one inputs give all-one output"       },
+    { "opcode": "100", "operation": "XOR", "edge_case": "Same operands always give 0"             },
+    { "opcode": "101", "operation": "NOT", "edge_case": "b is unused — should not affect result"  },
+    { "opcode": "110", "operation": "DIV", "edge_case": "b == 0 must return error (0xFF)"         }
+  ],
+  "learning_notes": [
+    "Verification engineers think about what can break, not just what works",
+    "A testbench must cover normal, boundary, and invalid scenarios",
+    "Zero flag must be verified explicitly — easy to forget",
+    "Division by zero is the most important edge case for ALU"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "day": 1,
+  "title": "ALU Design Understanding",
+  "module": "alu",
+  "operations_implemented": ["ADD", "SUB"],
+  "bit_width": 8,
+  "tool_used": "EDAPlayground",
+  "git_setup": {
+    "repo": "dv-ramp-up-week1",
+    "remote": "GitHub (SSH)",
+    "initial_commit": true
+  },
+  "test_run": {
+    "operation": "ADD",
+    "inputs": { "a": 10, "b": 5 },
+    "expected": 15,
+    "actual": 15,
+    "status": "PASS"
+  },
+  "learning_notes": [
+    "Module is the basic building block in SystemVerilog",
+    "ALU takes two operands and an opcode, produces a result",
+    "Opcode selects the operation to perform",
+    "always_comb is used for combinational logic",
+    "case statement maps opcode to operation"
+  ]
+}

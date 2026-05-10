@@ -1,0 +1,43 @@
+{
+  "day": 2,
+  "title": "PS/2 Protocol Signal Understanding",
+  "protocol": "PS/2",
+  "group": "B",
+  "physical_lines": [
+    {
+      "name": "ps2_clk",
+      "description": "Clock line driven by the keyboard or mouse",
+      "direction": "Input to host",
+      "active_edge": "Falling"
+    },
+    {
+      "name": "ps2_data",
+      "description": "Serial data line, one bit per clock cycle",
+      "direction": "Input to host",
+      "bit_order": "LSB first"
+    }
+  ],
+  "frame_structure": {
+    "total_bits": 11,
+    "fields": [
+      { "bit": 0,     "name": "START",  "value": "always 0" },
+      { "bit": "1-8", "name": "DATA",   "value": "D0 to D7 (LSB first)" },
+      { "bit": 9,     "name": "PARITY", "value": "odd parity" },
+      { "bit": 10,    "name": "STOP",   "value": "always 1" }
+    ]
+  },
+  "rtl_signals": [
+    { "name": "ps2_clk",  "direction": "input",  "width": 1, "type": "control", "description": "PS/2 clock from device" },
+    { "name": "ps2_data", "direction": "input",  "width": 1, "type": "data",    "description": "PS/2 serial data" },
+    { "name": "rx_data",  "direction": "output", "width": 8, "type": "data",    "description": "Received parallel byte" },
+    { "name": "rx_valid", "direction": "output", "width": 1, "type": "status",  "description": "High for one cycle when byte is ready" }
+  ],
+  "fsm_states": ["IDLE", "START", "DATA", "PARITY", "STOP"],
+  "learning_notes": [
+    "PS/2 is very different from ALU — it is time-based and stateful",
+    "Data arrives one bit per clock falling edge",
+    "LSB is sent first (opposite of what I expected)",
+    "Need 11 clock pulses for one complete byte",
+    "FSM is the right way to model this behaviour"
+  ]
+}
