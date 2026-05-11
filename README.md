@@ -94,11 +94,10 @@ vvp ps2_sim
 
 | ID        | Description                           | Status |
 |-----------|---------------------------------------|--------|
-| ISSUE-001 | SSH key setup for GitHub              | RESOLVED |
-| ISSUE-002 | overflow_flag not implemented         | OPEN   |
-| ISSUE-003 | PS/2 parity check not implemented     | OPEN   |
-| ISSUE-004 | No debounce on ps2_clk                | OPEN   |
-| ISSUE-005 | PS/2 testbench incomplete             | OPEN   |
+| ISSUE-001 | overflow_flag not implemented         | OPEN   |
+| ISSUE-002 | PS/2 parity check not implemented     | OPEN   |
+| ISSUE-003 | No debounce on ps2_clk                | OPEN   |
+| ISSUE-004 | PS/2 testbench incomplete             | OPEN   |
 
 See `logs/issue_log.txt` for full details.
 
