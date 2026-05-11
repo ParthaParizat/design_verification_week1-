@@ -3,18 +3,7 @@ ISSUE LOG — Week 1 | Group B (PS/2)
 Asmicore Semiconductor — DV Team
 ========================================
 
-[Day 1] ISSUE-001
-  Problem   : SSH push to GitHub failed on first attempt.
-  Error     : "Permission denied (publickey)"
-  Root Cause: SSH key was not added to GitHub account settings.
-  Fix       : Generated key with ssh-keygen -t ed25519
-              Copied public key to GitHub → Settings → SSH Keys.
-              Push worked immediately after.
-  Status    : RESOLVED
-
-------------------------------------------------------------
-
-[Day 3] ISSUE-002
+ISSUE-001
   Problem   : overflow_flag signal is not implemented correctly.
   What I know: Overflow occurs when two 8-bit values add up to a
                value greater than 255 (unsigned), or when signed
@@ -28,7 +17,7 @@ Asmicore Semiconductor — DV Team
 
 ------------------------------------------------------------
 
-[Day 5] ISSUE-003
+ISSUE-002
   Problem   : PS/2 parity checking not implemented in ps2_rx.sv.
   What I know: PS/2 uses odd parity — the number of 1s in the 8
                data bits plus the parity bit must be odd.
@@ -41,7 +30,7 @@ Asmicore Semiconductor — DV Team
 
 ------------------------------------------------------------
 
-[Day 5] ISSUE-004
+ISSUE-003
   Problem   : No debounce logic for ps2_clk glitches.
   What I know: Real PS/2 keyboards can produce short spurious pulses
                on the clock line due to mechanical or electrical noise.
@@ -51,7 +40,7 @@ Asmicore Semiconductor — DV Team
 
 ------------------------------------------------------------
 
-[Day 6] ISSUE-005
+ISSUE-004
   Problem   : ps2_rx_tb.sv is incomplete.
   What works : Reset generation, clock generation, and the
                send_ps2_byte task are implemented. TC001 runs.
